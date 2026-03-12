@@ -16,8 +16,8 @@ await password.fill("admin123");
 await page.waitForTimeout(3000);
 const button= await page.locator(".oxd-button.oxd-button--medium.oxd-button--main.orangehrm-login-button").click();
 //await button.click();
-expect(page).toHaveURL(/dashboard/);
-await page.waitForTimeout(3000);
+await expect(page).toHaveURL(/dashboard/);
+// await page.waitForTimeout(3000);
 
 
 });
@@ -33,7 +33,7 @@ const password=await page.getByPlaceholder("password");
 await password.fill("admin123");
 const button= await page.locator(".oxd-button.oxd-button--medium.oxd-button--main.orangehrm-login-button").click();
 //await button.click();
-expect(page).toHaveURL(/dashboard/);
+await expect(page).toHaveURL(/dashboard/);
 const admin=await page.locator('//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[1]/a').click();
 await page.locator(".oxd-input.oxd-input--active").first().fill("Praveen");
 //
@@ -54,7 +54,7 @@ await page.locator(".oxd-userdropdown-img").click();
  await page.waitForTimeout(2000);
  await page.getByText("Logout").click();
 await page.waitForTimeout(2000);
-expect(page).toHaveURL(/Login/);
+await expect(page).toHaveURL(/auth/);
 });
 
 
@@ -65,7 +65,7 @@ test('has title', async ({ page }) => {
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test.skip('get started link', async ({ page }) => {
+test('get started link', async ({ page }) => {
   page.setDefaultTimeout(60000);
   await page.goto('https://playwright.dev/');
 
